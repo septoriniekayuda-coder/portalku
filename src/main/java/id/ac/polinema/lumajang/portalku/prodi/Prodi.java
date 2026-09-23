@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import id.ac.polinema.lumajang.portalku.kurikulum.Kurikulum;
+import java.util.HashSet;
+import java.util.Set;
+import id.ac.polinema.lumajang.portalku.pengumuman.Pengumuman;
 
 @Entity
 @Table(name = "program_studi")
@@ -33,6 +36,9 @@ public class Prodi {
 
     @OneToMany(mappedBy = "prodi", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Kurikulum> daftarKurikulum = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "sasaranProdi", fetch = FetchType.LAZY)
+    private Set<Pengumuman> daftarPengumuman = new HashSet<>();
 
     public void tambahKurikulum(Kurikulum kurikulum) {
         daftarKurikulum.add(kurikulum);
