@@ -11,8 +11,6 @@ public class PengumumanDto {
     private LocalDate tanggalTerbit;
     private Integer jumlahDilihat;
     
-    // Ini adalah data tambahan yang diminta modul, 
-    // yang aslinya tidak ada secara langsung di tabel pengumuman
     private String namaKategori;
     private Integer jumlahLampiran;
 }

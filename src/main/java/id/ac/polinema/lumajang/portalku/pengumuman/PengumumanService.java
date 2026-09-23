@@ -13,10 +13,8 @@ public class PengumumanService {
 
     // 1. Operasi BACA
     public List<PengumumanDto> cariSemua() {
-        // Ambil data Entity dari database (sudah JOIN FETCH)
         List<Pengumuman> daftarEntity = pengumumanRepository.findAllWithKategori();
         
-        // Terjemahkan setiap Entity menjadi DTO menggunakan Stream
         return daftarEntity.stream().map(entitas -> {
             PengumumanDto dto = new PengumumanDto();
             dto.setId(entitas.getId());
@@ -42,7 +40,6 @@ public class PengumumanService {
 
     // 3. Operasi HAPUS
     public void hapus(Integer id) {
-        // Validasi: Cek dulu apakah datanya ada sebelum dihapus
         if (!pengumumanRepository.existsById(id)) {
             throw new RuntimeException("Pengumuman tidak ditemukan.");
         }
